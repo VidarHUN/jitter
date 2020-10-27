@@ -26,11 +26,11 @@ python3 parse.py tg2-no-1h.csv 10.2.0.17 10.2.0.11
 
 1. Read the `csv` file and parse it into a big 2d list
   - sublist elements: 
-    0. Packet arrival time 
-    1. Source IP
-    2. Destination IP
-    3. Timestamp
-    4. Sequence number
+    1. Packet arrival time 
+    2. Source IP
+    3. Destination IP
+    4. Timestamp
+    5. Sequence number
 2. Sort and make math on forward and reverse traffic 
   - math:
     ``` 
