@@ -1,4 +1,4 @@
-# Calculate jitter (delay) between in and out traffic
+# Calculate jitter (delay) between Forward and Reverse traffic
 
 Currently it's only works if the file has two stream and no more or less.
 
