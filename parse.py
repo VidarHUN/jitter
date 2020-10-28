@@ -58,17 +58,31 @@ for i in range(2, len(data) - 1):
 # plt.plot(delta_forward, 'r', delta_reverse, 'g')
 
 # Plot settings
-plt.plot(delta_forward, label='Forward')  # Set the forward stream data
-plt.plot(delta_reverse, label='Reverse')  # Set the reverse stream data
-plt.xlabel('Packets')
-plt.ylabel('Jitter (ms)')
-plt.title("Jitter")
-plt.legend()
+fig, ax = plt.subplots(2, 1)
+ax[1].plot(delta_forward, label='Forward')
+ax[1].plot(delta_reverse, label='Reverse')
+ax[1].set_xlabel('Packets')
+ax[1].set_ylabel('Jitter (ms)')
+ax[1].set_title('Jitter')
+ax[1].legend()
 
 # I don’t use it because I think it calculates an average of those values 
 # for every second. But I left it here to see if it would come in handy.
 # plt.xlim(0, data[-1][0]) # Change X axes range to 0 - last packet arrival time
 
 # print(*delta_forward, sep='\n')
+
+textstr = '\n'.join((
+   'Average of Forward: {:.4f} ms'.format(avg(delta_forward)),
+   'Max of Forward: {:.4f} ms'.format(max(delta_forward)),
+   'Min of Forward: {:.4f} ms'.format(min(delta_forward)),
+   'Average of Reverse: {:.4f} ms'.format(avg(delta_reverse)),
+   'Max of Reverse: {:.4f} ms'.format(max(delta_reverse)),
+   'Min of Reverse: {:.4f} ms'.format(min(delta_reverse))
+   ))
+
+props = dict(boxstyle='round', facecolor='white', alpha=0.5)
+
+ax[0].text(0.05, 0.95, textstr, transform=ax[0].transAxes, fontsize=12, verticalalignment='top', bbox=props)
 
 plt.show()
